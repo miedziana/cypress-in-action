@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 RUN npm run build
-RUN npx nyc instrument --compact=false .\dist\login-demo\ instrumented
+
 
 # -----------------
 
