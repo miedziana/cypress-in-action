@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DockerCompose@0
+  displayName: Docker Compose Build
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose-pipeline.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'build'
+- task: DockerCompose@0
+  displayName: Docker Compose Up
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose-pipeline.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'up'
+    arguments: '--abort-on-container-exit --exit-code-from e2e'
