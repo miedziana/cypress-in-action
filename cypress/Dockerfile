@@ -1,5 +1,5 @@
 FROM cypress/base:14
-WORKDIR /app
+WORKDIR /cypress
 
 # dependencies will be installed only if the package files change
 COPY package.json .
