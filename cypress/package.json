@@ -1,0 +1,19 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "Cypress tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.10.0",
+    "@types/node": "^18.7.23",
+    "cypress": "10.8.0",
+    "typescript": "4.8.3"
+  }
+}
