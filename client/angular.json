@@ -80,10 +80,8 @@
           }
         },
         "test": {
-          "builder": "ngx-build-plus:dev-server",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "browserTarget": "cypress-angular-code-coverage:build",
-            "extraWebpackConfig": "./cypress/coverage.webpack.js"
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
