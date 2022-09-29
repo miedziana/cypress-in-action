@@ -22,6 +22,6 @@ services:
       - CYPRESS_baseUrl=http://webapp:4200
     command: npx cypress run
     volumes:
-      - ./e2e/cypress:/app/cypress
-      - ./e2e/cypress.config.ts:/app/cypress.config.ts
-      - ./e2e/tsconfig.json:/app/tsconfig.json
+      - ./client/cypress:/app/cypress
+      - ./client/cypress.config.ts:/app/cypress.config.ts
+      - ./client/tsconfig.json:/app/tsconfig.json
