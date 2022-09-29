@@ -15,11 +15,13 @@ services:
       - "3001:3001"
   e2e:
     image: cypress
-    build: ./cypress
+    build: ./e2e
     depends_on:
       - webapp
     environment:
       - CYPRESS_baseUrl=http://webapp:4200
     command: npx cypress run
     volumes:
-      - ./cypress:/cypress
+      - ./e2e/cypress:/app/cypress
+      - ./e2e/cypress.config.ts:/app/cypress.config.ts
+      - ./e2e/tsconfig.json:/app/tsconfig.json
