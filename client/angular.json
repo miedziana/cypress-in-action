@@ -69,7 +69,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "login-demo:build:production",
+              "browserTarget": "login-demo:build:production"
             }
           }
         },
@@ -83,7 +83,7 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "cypress-angular-code-coverage:build",
-            "extraWebpackConfig": "./cypress/coverage.webpack.js"
+            "extraWebpackConfig": "./cypress/coverage.webpack.js",
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
