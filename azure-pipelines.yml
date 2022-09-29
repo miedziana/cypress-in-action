@@ -25,3 +25,15 @@ steps:
     action: 'Run a Docker Compose command'
     dockerComposeCommand: 'up'
     arguments: '--abort-on-container-exit --exit-code-from e2e'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Cypress Screenshot Files'
+  inputs:
+    PathtoPublish: e2e/cypress/screenshots/
+    ArtifactName: screenshots
+  condition: failed()
+  
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Cypress Videos'
+  inputs:
+    PathtoPublish: e2e/cypress/videos/
+    ArtifactName: videos
