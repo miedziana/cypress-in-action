@@ -52,3 +52,4 @@ Thumbs.db
 /server/.vs/server/v17/
 /client/.angular/cache/14.2.3/
 /e2e/node_modules/
+/client/cypress/videos/
