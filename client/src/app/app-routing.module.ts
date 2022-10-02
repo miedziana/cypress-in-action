@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: 'fetch-data',
     component: FetchDataComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'external-api',
