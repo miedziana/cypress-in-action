@@ -16,6 +16,12 @@ steps:
     command: 'install'
     workingDir: 'client'
 - task: Npm@1
+  displayName: NPM Run Unit Tests
+  inputs:
+    command: 'custom'
+    workingDir: 'client'
+    customCommand: 'run test:ci'
+- task: Npm@1
   displayName: NPM Run Component Tests
   inputs:
     command: 'custom'
