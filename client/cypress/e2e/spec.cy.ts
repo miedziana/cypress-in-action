@@ -1,6 +1,7 @@
 describe('My First Test', () => {
   it('Visits the initial project page', () => {
-    cy.visit('/');
+    cy.visit('/')
+    cy.contains('app is running!')
     // cy.intercept('GET', '/weatherforecast', {
     //   statusCode: 200,
     //   body: [{
