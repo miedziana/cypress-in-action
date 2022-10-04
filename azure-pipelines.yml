@@ -45,12 +45,12 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Cypress Screenshot Files'
   inputs:
-    PathtoPublish: e2e/cypress/screenshots/
+    PathtoPublish: client/cypress/screenshots/
     ArtifactName: screenshots
   condition: failed()
   
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Cypress Videos'
   inputs:
-    PathtoPublish: e2e/cypress/videos/
+    PathtoPublish: client/cypress/videos/
     ArtifactName: videos
