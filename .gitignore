@@ -45,10 +45,10 @@ testem.log
 .DS_Store
 Thumbs.db
 /cypress/node_modules/
-/client/node_modules/
-/client/dist/login-demo/
+/client_auth/node_modules/
+/client_auth/dist/login-demo/
 /.
 /server/.idea/.idea.server/.idea/
 /server/.vs/server/v17/
-/client/.angular/cache/14.2.3/
+/client_auth/.angular/cache/14.2.3/
 /e2e/node_modules/

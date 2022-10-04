@@ -29,18 +29,14 @@ COPY package-lock.json .
 
 RUN npm install --production
 
-COPY --from=build ./app/dist/login-demo ./dist
+COPY --from=build ./app/dist/client ./dist/client
 COPY ./server.js .
-COPY ./api-server.js .
-COPY ./auth_config.json .
 
 RUN apk --no-cache add curl
 
 ENV NODE_ENV=production
-ENV SERVER_PORT=4200
-ENV API_SERVER_PORT=3001
+ENV SERVER_PORT=3000
 
-EXPOSE 4200
-EXPOSE 3001
+EXPOSE 3000
 
 CMD ["npm", "run", "prod"]
