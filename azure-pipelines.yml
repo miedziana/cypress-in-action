@@ -15,18 +15,6 @@ steps:
   inputs:
     command: 'install'
     workingDir: 'client'
-- task: Npm@1
-  displayName: NPM Run Unit Tests
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run test:ci'
-- task: Npm@1
-  displayName: NPM Run Component Tests
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run cy:component'
 - task: DockerCompose@0
   displayName: Docker Compose Build
   inputs:
