@@ -1,17 +1,22 @@
 ﻿version: "3.9"  # optional since v1.27.0
 services:
+  api:
+    image: backend
+    build: ./server
+    ports:
+      - "7009:80"
   webapp:
     image: frontend
     build: ./client
     ports:
-      - "3000:3000"
+      - "4200:4200"
   e2e:
     image: cypress
     build: ./e2e
     depends_on:
       - webapp
     environment:
-      - CYPRESS_baseUrl=http://webapp:3000
+      - CYPRESS_baseUrl=http://webapp:4200
     command: npx cypress run
     volumes:
       - ./client/cypress:/app/cypress
