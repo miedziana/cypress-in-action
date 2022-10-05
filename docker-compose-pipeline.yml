@@ -17,7 +17,7 @@ services:
       - webapp
     environment:
       - CYPRESS_baseUrl=http://webapp:4200
-    command: npx cypress run
+    command: sh -c "npx cypress run && npx nyc report --reporter=cobertura"
     volumes:
       - ./client/cypress:/app/cypress
       - ./client/cypress.config.ts:/app/cypress.config.ts
