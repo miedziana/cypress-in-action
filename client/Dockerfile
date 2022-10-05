@@ -14,6 +14,7 @@ RUN npm install
 COPY . .
 
 RUN npm run build
+RUN npx nyc instrument dist/client dist/client --exclude-after-remap=false --complete-copy --in-place
 
 
 # -----------------

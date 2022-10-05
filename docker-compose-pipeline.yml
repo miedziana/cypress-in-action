@@ -22,3 +22,5 @@ services:
       - ./client/cypress:/app/cypress
       - ./client/cypress.config.ts:/app/cypress.config.ts
       - ./client/tsconfig.json:/app/tsconfig.json
+      - ./client/.nyc_output:/app/.nyc_output
+      - ./client/coverage:/app/coverage
