@@ -36,9 +36,22 @@ steps:
     PathtoPublish: client/cypress/screenshots/
     ArtifactName: screenshots
   condition: failed()
-  
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Cypress Videos'
   inputs:
     PathtoPublish: client/cypress/videos/
     ArtifactName: videos
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'client'
+    customCommand: 'run coverage-report'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Code Coverage Report'
+  inputs:
+    PathtoPublish: client/coverage/
+    ArtifactName: coverage-report
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/client/coverage/cobertura-coverage.xml'
