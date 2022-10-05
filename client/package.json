@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
-    "coverage-report": "nyc report --reporter=cobertura",
+    "coverage-report": "nyc report --reporter=cobertura --report-dir=",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
