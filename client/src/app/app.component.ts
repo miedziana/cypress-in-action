@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  links = ['home', 'todos', 'forecast'];
+  activeLink = this.links[0];
 }

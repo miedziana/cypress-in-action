@@ -1,7 +1,7 @@
 describe('My First Test', () => {
   it('Visits the initial project page', () => {
     cy.visit('/')
-    cy.contains('app is running!')
+    cy.contains('Welcome to Your Day App!')
   });
   it('Visits weather forecast component and gets data from backend', () => {
     cy.intercept('GET', '/weatherforecast', {
@@ -28,7 +28,7 @@ describe('My First Test', () => {
         summary: 'Mild'
       }, {date: '2022-10-07T11:15:46.6847979+00:00', temperatureC: 8, temperatureF: 46, summary: 'Mild'}],
     });
-    cy.get('[data-cy="forecast"]').click();
+    cy.get('#mat-tab-link-3').click();
     cy.get(':nth-child(1) > [data-cy="summary"]').should('contain.text', 'Sweltering');
     cy.get(':nth-child(2) > [data-cy="summary"]').should('contain.text', 'Balmy');
     cy.get(':nth-child(3) > [data-cy="summary"]').should('contain.text', 'Scorching');
