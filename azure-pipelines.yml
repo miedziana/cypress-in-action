@@ -46,11 +46,6 @@ steps:
   inputs:
     PathtoPublish: client/coverage/
     ArtifactName: coverage-report
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run coverage-report'
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
