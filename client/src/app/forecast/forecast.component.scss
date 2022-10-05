@@ -1,3 +1,22 @@
 table {
   width: 100%;
 }
+mat-cell:nth-child(1),
+mat-header-cell:nth-child(1) {
+  flex: 0 0 30%;
+}
+
+mat-cell:nth-child(5),
+mat-header-cell:nth-child(5) {
+  flex: 0 0 10%;
+}
+
+mat-cell {
+  padding: 10px;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}

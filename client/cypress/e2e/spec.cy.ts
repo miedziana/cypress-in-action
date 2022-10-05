@@ -1,3 +1,5 @@
+import * as http from 'http';
+
 describe('My First Test', () => {
   it('Visits the initial project page', () => {
     cy.visit('/')
@@ -34,5 +36,15 @@ describe('My First Test', () => {
     cy.get(':nth-child(3) > [data-cy="summary"]').should('contain.text', 'Scorching');
     cy.get(':nth-child(4) > [data-cy="summary"]').should('contain.text', 'Mild');
     cy.get(':nth-child(5) > [data-cy="summary"]').should('contain.text', 'Mild');
+  });
+  it('On refresh new forecast request is made', () => {
+    cy.intercept('GET', '/weatherforecast', (req) => {
+      req.continue((res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body.length).to.equal(5);
+      })
+    })
+    cy.get('#refreshButton').click();
+
   })
 })
