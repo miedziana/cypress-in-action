@@ -29,7 +29,7 @@ steps:
     dockerComposeFile: '**/docker-compose-pipeline.yml'
     action: 'Run a Docker Compose command'
     dockerComposeCommand: 'up'
-    arguments: '--abort-on-container-exit --exit-code-from e2e'
+    arguments: '--abort-on-container-exit --exit-code-from webapp'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Cypress Screenshot Files'
   inputs:
