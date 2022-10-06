@@ -8,7 +8,8 @@
     "**/*.spec.ts",
     "./src/main.ts",
     "./src/test.ts",
-    "**/*.conf.js"
+    "**/*.conf.js",
+    "/app/dist/*"
   ],
   "reporter": ["lcov", "cobertura", "text-summary"]
 }

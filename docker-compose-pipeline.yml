@@ -14,3 +14,4 @@ services:
       - ./client/cypress:/app/cypress
       - ./client/.nyc_output:/app/.nyc_output
       - ./client/coverage:/app/coverage
+      - ./client/results:/app/results
