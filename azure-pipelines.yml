@@ -41,11 +41,17 @@ steps:
   inputs:
     PathtoPublish: client/cypress/videos/
     ArtifactName: videos
+  condition: succeededOrFailed()
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Code Coverage Report'
   inputs:
     PathtoPublish: client/coverage/
     ArtifactName: coverage-report
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '**/test-results.xml'
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
