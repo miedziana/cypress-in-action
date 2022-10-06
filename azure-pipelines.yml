@@ -29,7 +29,7 @@ steps:
     dockerComposeFile: '**/docker-compose-pipeline.yml'
     action: 'Run a Docker Compose command'
     dockerComposeCommand: 'up'
-    arguments: '--abort-on-container-exit --exit-code-from e2e'
+    arguments: '--abort-on-container-exit --exit-code-from webapp'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Cypress Screenshot Files'
   inputs:
@@ -41,11 +41,17 @@ steps:
   inputs:
     PathtoPublish: client/cypress/videos/
     ArtifactName: videos
+  condition: succeededOrFailed()
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Code Coverage Report'
   inputs:
     PathtoPublish: client/coverage/
     ArtifactName: coverage-report
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '**/test-results.xml'
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
