@@ -9,7 +9,14 @@
     "./src/main.ts",
     "./src/test.ts",
     "**/*.conf.js",
-    "/app/dist/*"
+    "/app/dist/*",
+    "/app/coverage/**",
+    "/app/cypress/**",
+    "/app/dist/**",
+    "**/*.spec.ts",
+    "/app/src/main.ts",
+    "/app/src/test.ts",
+    "**/*.conf.js",
   ],
   "reporter": ["lcov", "cobertura", "text-summary"]
 }
