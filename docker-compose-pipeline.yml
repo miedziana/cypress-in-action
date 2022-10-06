@@ -10,17 +10,7 @@ services:
     build: ./client
     ports:
       - "4200:4200"
-  e2e:
-    image: cypress
-    build: ./e2e
-    depends_on:
-      - webapp
-    environment:
-      - CYPRESS_baseUrl=http://webapp:4200
-    command: npx cypress run
     volumes:
       - ./client/cypress:/app/cypress
-      - ./client/cypress.config.ts:/app/cypress.config.ts
-      - ./client/tsconfig.json:/app/tsconfig.json
       - ./client/.nyc_output:/app/.nyc_output
       - ./client/coverage:/app/coverage

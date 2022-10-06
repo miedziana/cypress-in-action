@@ -1,0 +1,6 @@
+{
+  "/weatherforecast": {
+    "target": "http://api",
+    "secure": false
+  }
+}
