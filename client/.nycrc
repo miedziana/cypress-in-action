@@ -16,7 +16,7 @@
     "**/*.spec.ts",
     "/app/src/main.ts",
     "/app/src/test.ts",
-    "**/*.conf.js",
+    "**/*.conf.js"
   ],
   "reporter": ["lcov", "cobertura", "text-summary"]
 }
