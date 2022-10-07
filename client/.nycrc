@@ -16,7 +16,10 @@
     "**/*.spec.ts",
     "/app/src/main.ts",
     "/app/src/test.ts",
-    "**/*.conf.js"
+    "**/*.conf.js",
+    "/app/cypress.config.ts",
+    "**/main.ts",
+    "/app/server.js"
   ],
   "reporter": ["lcov", "cobertura", "text-summary"]
 }
