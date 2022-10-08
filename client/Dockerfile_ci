@@ -7,8 +7,10 @@ WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
 
-RUN npm install
+RUN npm ci
 
 COPY . .
+
+RUN npx cypress verify
 
 CMD ["npm", "run", "e2e:ci"]
