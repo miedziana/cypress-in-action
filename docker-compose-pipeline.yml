@@ -3,13 +3,11 @@ services:
   api:
     image: backend
     build: ./server
-    ports:
-      - "7009:80"
   webapp:
-    image: frontend
-    build: ./client
-    ports:
-      - "4200:4200"
+    image: frontend-e2e
+    build:
+      context: ./client
+      dockerfile: Dockerfile_ci
     volumes:
       - ./client/cypress:/app/cypress
       - ./client/.nyc_output:/app/.nyc_output
