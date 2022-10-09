@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
-  links = ['home', 'todos', 'forecast'];
+  links = [{url: 'home', authOnly: false}, {url: 'todos', authOnly: false}, {url: 'forecast', authOnly: false}, {url: 'me', authOnly: true}];
   activeLink = this.links[0];
+
+  constructor(public auth: AuthService) {
+  }
+}
+
+interface Link {
+  url: string,
+  authOnly?: boolean
 }

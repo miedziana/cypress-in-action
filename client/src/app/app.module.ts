@@ -13,15 +13,25 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { TodosComponent } from './todos/todos.component';
 import { HomeComponent } from './home/home.component';
 import {MatTableModule} from '@angular/material/table';
+import {AuthModule} from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './auth-button/auth-button.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     ForecastComponent,
     TodosComponent,
-    HomeComponent
+    HomeComponent,
+    AuthButtonComponent,
+    UserProfileComponent
   ],
   imports: [
+    AuthModule.forRoot({
+      domain: 'miedziana.eu.auth0.com',
+      clientId: 'yL6hguqWA45TUatw1pVemSlVLjOyxn6n'
+    }),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -30,7 +40,8 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatButtonModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
