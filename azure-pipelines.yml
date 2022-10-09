@@ -46,7 +46,7 @@ steps:
   condition: succeededOrFailed()
   inputs:
     testRunner: JUnit
-    testResultsFiles: '**/test-results.xml'
+    testResultsFiles: '**/test-results-*.xml'
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
