@@ -4,7 +4,7 @@ import {ForecastComponent} from './forecast/forecast.component';
 import {TodosComponent} from './todos/todos.component';
 import {HomeComponent} from './home/home.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
-import {AuthGuard} from '@auth0/auth0-angular';
+import {UserAuthGuard} from './user.auth.guard';
 
 const routes: Routes = [
   {
@@ -22,13 +22,14 @@ const routes: Routes = [
   {
     path: 'me',
     component: UserProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [UserAuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [UserAuthGuard]
 })
 export class AppRoutingModule {
 

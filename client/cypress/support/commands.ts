@@ -1,43 +1,71 @@
-// ***********************************************
-// This example namespace declaration will help
-// with Intellisense and code completion in your
-// IDE or Text Editor.
-// ***********************************************
-// declare namespace Cypress {
-//   interface Chainable<Subject = any> {
-//     customCommand(param: any): typeof customCommand;
-//   }
-// }
+import * as jwt from "jsonwebtoken";
+
+Cypress.Commands.add("loginByAuth0Api", (username: string, password?: string) => {
+  const log = Cypress.log({
+    displayName: "AUTH0 LOGIN",
+    message: [`🔐 Authenticating | ${username}`],
+    // @ts-ignore
+    autoEnd: false,
+  });
+
+  const client_id = Cypress.env("auth0_client_id");
+  const client_secret = Cypress.env("auth0_client_secret");
+  const audience = Cypress.env("auth0_audience");
+  const scope = Cypress.env("auth0_scope");
+
+  log.snapshot("before");
+
+  cy.request({
+    method: "POST",
+    url: `https://${Cypress.env("auth0_domain")}/oauth/token`,
+    body: {
+      grant_type: "password",
+      username,
+      password,
+      audience,
+      scope,
+      client_id,
+      client_secret,
+    },
+  }).then(({body}) => {
+    const user: any = jwt.decode(body.id_token);
+
+    const userItem = {
+      token: body.access_token,
+      user: {
+        sub: user.sub,
+        nickname: user.nickname,
+        picture: user.name,
+        email: user.email,
+      },
+    };
+
+    window.localStorage.setItem("auth0Cypress", JSON.stringify(userItem));
+
+    log.snapshot("after");
+    log.end();
+  });
+
+  cy.visit("/");
+});
 //
-// function customCommand(param: any): void {
-//   console.warn(param);
-// }
+// Cypress.Commands.add('login', (overrides = {}) => {
+//   Cypress.log({
+//     name: 'loginViaAuth0',
+//   });
 //
-// NOTE: You can use it like so:
-// Cypress.Commands.add('customCommand', customCommand);
-//
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+//   const options = {
+//     method: 'POST',
+//     url: `https://${Cypress.env("auth0_domain")}/oauth/token`,
+//     body: {
+//       grant_type: 'password',
+//       username: Cypress.env('auth0_username'),
+//       password: Cypress.env('auth0_password'),
+//       audience: Cypress.env('auth0_audience'),
+//       scope: 'openid profile email',
+//       client_id: Cypress.env('auth0_client_id'),
+//       client_secret: Cypress.env('auth0_client_secret'),
+//     },
+//   };
+//   cy.request(options.method, options.url, options.body);
+// });

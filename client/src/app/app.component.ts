@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from '@auth0/auth0-angular';
+import {UserService} from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   links = [{url: 'home', authOnly: false}, {url: 'todos', authOnly: false}, {url: 'forecast', authOnly: false}, {url: 'me', authOnly: true}];
   activeLink = this.links[0];
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, public userService: UserService) {
   }
 }
 

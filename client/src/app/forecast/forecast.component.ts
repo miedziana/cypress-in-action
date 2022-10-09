@@ -17,7 +17,14 @@ export class ForecastComponent {
 
   private getForecasts() {
     this.http.get<WeatherForecast[]>('weatherforecast').subscribe(result => {
-      this.forecasts = result;
+      result.forEach(result => {
+        this.forecasts.push({
+          date: new Date(result.date),
+          temperatureC: result.temperatureC,
+          temperatureF: result.temperatureF,
+          summary: result.summary
+        })
+      })
     }, error => console.error(error));
   }
 
@@ -27,7 +34,7 @@ export class ForecastComponent {
 }
 
 export interface WeatherForecast {
-  date: string;
+  date: Date;
   temperatureC: number;
   temperatureF: number;
   summary: string;
