@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {ForecastComponent} from './forecast/forecast.component';
 import {TodosComponent} from './todos/todos.component';
 import {HomeComponent} from './home/home.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {AuthGuard} from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
@@ -16,6 +18,11 @@ const routes: Routes = [
   {
     path: 'todos',
     component: TodosComponent,
+  },
+  {
+    path: 'me',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
