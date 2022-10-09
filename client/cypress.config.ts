@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress'
+require('dotenv').config()
 
 export default defineConfig({
   reporter: 'junit',
@@ -7,13 +8,13 @@ export default defineConfig({
     toConsole: true
   },
   env: {
-    auth0_username: 'a4002e9c48f918@smtp.mailtrap.io',
-    auth0_password: '8379deb6a1a939',
-    auth0_domain: 'miedziana.eu.auth0.com',
-    auth0_audience: 'https://miedziana.eu.auth0.com/api/v2/',
-    auth0_scope: 'openid profile email',
-    auth0_client_id: 'yL6hguqWA45TUatw1pVemSlVLjOyxn6n',
-    auth0_client_secret: '0DnVMJFEEwpTA0ZG_dhRshpF8QIrAA8PAjRx76mL5IPvyYeAyxJvEsIemVOAqkFR'
+    auth0_username: process.env['AUTH0_USERNAME'],
+    auth0_password: process.env['AUTH0_PASSWORD'],
+    auth0_domain: process.env['AUTH0_DOMAIN'],
+    auth0_audience: process.env['AUTH0_AUDIENCE'],
+    auth0_scope: process.env['AUTH0_SCOPE'],
+    auth0_client_id: process.env['AUTH0_CLIENTID'],
+    auth0_client_secret: process.env['AUTH0_CLIENT_SECRET']
   },
   e2e: {
     baseUrl: 'http://localhost:4200',

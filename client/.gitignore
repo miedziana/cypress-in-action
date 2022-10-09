@@ -44,3 +44,4 @@ Thumbs.db
 /.nyc_output/out.json
 /results/
 /cypress/screenshots/spec.cy.ts/On refresh new forecast request is made -- after all hook generateReport (failed).png
+/.env
