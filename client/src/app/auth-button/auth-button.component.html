@@ -1,4 +1,4 @@
-<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+<ng-container *ngIf="userService.isAuthenticated() | async; else loggedOut">
   <button mat-icon-button color="secondary" (click)="auth.logout({ returnTo: document.location.origin })">
     Log out
   </button>
