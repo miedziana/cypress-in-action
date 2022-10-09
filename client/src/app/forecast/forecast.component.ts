@@ -17,6 +17,7 @@ export class ForecastComponent {
 
   private getForecasts() {
     this.http.get<WeatherForecast[]>('weatherforecast').subscribe(result => {
+      this.forecasts = [];
       result.forEach(result => {
         this.forecasts.push({
           date: new Date(result.date),
