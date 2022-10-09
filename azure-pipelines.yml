@@ -15,14 +15,6 @@ steps:
   inputs:
     containerregistrytype: 'Container Registry'
     dockerComposeFile: '**/docker-compose-pipeline.yml'
-    dockerComposeFileArgs: |
-      AUTH0_USERNAME=$(AUTH0_USERNAME)
-      AUTH0_PASSWORD=$(AUTH0_PASSWORD)
-      AUTH0_DOMAIN=$(AUTH0_DOMAIN)
-      AUTH0_AUDIENCE=$(AUTH0_AUDIENCE)
-      AUTH0_SCOPE=$(AUTH0_SCOPE)
-      AUTH0_CLIENTID=$(AUTH0_CLIENTID)
-      AUTH0_CLIENT_SECRET=$(AUTH0_CLIENT_SECRET)
     action: 'Run a Docker Compose command'
     dockerComposeCommand: 'build'
 - task: DockerCompose@0
