@@ -3,7 +3,16 @@ describe('My First Test', () => {
     cy.visit('/')
     cy.contains('Welcome to Your Day App!')
   });
+  it('Navigation works', () => {
+    cy.visit('/')
+    cy.get('p').should('have.text', 'Have a nice day')
+    cy.visit('todos')
+    cy.get('p').should('have.text', 'todos works!')
+    cy.visit('forecast')
+    cy.get('#tableLabel').should('have.text', 'Weather forecast')
+  })
   it('Visits weather forecast component and gets data from backend', () => {
+    cy.visit('/')
     cy.intercept('GET', '/weatherforecast', {
       statusCode: 200,
       body: [{

@@ -1,11 +1,13 @@
 <div>
-  <h1 id="tableLabel">Weather forecast</h1>
+  <div>
+    <span id="tableLabel">Weather forecast</span>
+    <button id="refreshButton" mat-icon-button color="primary" (click)="refreshForecast()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
 
   <p *ngIf="forecasts.length === 0"><em>Loading...</em></p>
 
-  <button id="refreshButton" mat-icon-button color="primary" (click)="refreshForecast()">
-    <mat-icon>refresh</mat-icon>
-  </button>
 
   <table mat-table [dataSource]="forecasts" class="mat-elevation-z8" *ngIf="forecasts.length !== 0">
 

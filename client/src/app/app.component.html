@@ -1,15 +1,7 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more</mat-icon>
+  <button mat-icon-button aria-label="Example icon-button with a menu">
+    <mat-icon>menu</mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="me">
-      <span>User Profile</span>
-    </button>
-    <button mat-menu-item routerLink="my-day">
-      <span>My Day</span>
-    </button>
-  </mat-menu>
   <span>Welcome to Your Day App!</span>
   <span class="example-spacer"></span>
   <app-auth-button></app-auth-button>
