@@ -3,7 +3,7 @@ import { defineConfig } from 'cypress'
 export default defineConfig({
   reporter: 'junit',
   reporterOptions: {
-    mochaFile: 'results/test-results.xml',
+    mochaFile: 'results/test-results-[hash].xml',
     toConsole: true
   },
   env: {
