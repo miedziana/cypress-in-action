@@ -9,7 +9,7 @@
 
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
   <div *ngFor="let link of links">
-  <a mat-tab-link *ngIf="!link.authOnly || link.authOnly && (userService.isAuthenticated() | async) === true"
+  <a mat-tab-link *ngIf="!link.authOnly || (link.authOnly && (userService.isAuthenticated() | async)) === true"
   (click)="activeLink = link"
   [active]="activeLink == link" routerLink="{{link.url}}"> {{link.url}} </a>
   </div>

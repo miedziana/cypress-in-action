@@ -14,7 +14,7 @@ export class UserService {
   public isAuthenticated(): Observable<boolean> {
     // @ts-ignore
     if (window.Cypress) {
-      return of(localStorage.getItem("auth0Cypress") !== undefined);
+      return of(localStorage.getItem("auth0Cypress") !== null);
     } else {
       return this.auth.isAuthenticated$;
     }

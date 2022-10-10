@@ -10,7 +10,7 @@ export class UserAuthGuard extends AuthGuard {
   ): Observable<boolean> {
     // @ts-ignore
     if (window.Cypress) {
-      return of(localStorage.getItem("auth0Cypress") !== undefined);
+      return of(localStorage.getItem("auth0Cypress") !== null);
     } else {
       return super.canActivate(route, state);
     }
