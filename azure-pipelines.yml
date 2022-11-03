@@ -91,6 +91,11 @@ steps:
     command: 'custom'
     workingDir: 'client'
     customCommand: 'run coverage-report'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Code Coverage Report'
+  inputs:
+    PathtoPublish: client/reports/
+    ArtifactName: reports
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
