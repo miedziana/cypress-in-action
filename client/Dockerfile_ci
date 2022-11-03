@@ -11,8 +11,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm run test:coverage
-
 RUN npx cypress verify
 
-CMD ["npm", "run", "e2e:ci"]
+CMD ["npm", "run", "all-tests"]
