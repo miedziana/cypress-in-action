@@ -11,21 +11,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Npm@1
-  inputs:
-    command: 'ci'
-    workingDir: 'client'
-- task: Npm@1
-  displayName: Run Unit Tests
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run test:coverage'
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Code Coverage - Unit Tests'
-  inputs:
-    PathtoPublish: client/coverage-jest
-    ArtifactName: coverage-jest
 - task: DockerCompose@0
   displayName: Docker Compose Build
   inputs:
