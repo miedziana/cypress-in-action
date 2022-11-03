@@ -21,3 +21,4 @@ services:
       - ./client/.nyc_output:/app/.nyc_output
       - ./client/coverage:/app/coverage
       - ./client/results:/app/results
+      - ./client/reports:/app/reports
