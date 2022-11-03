@@ -12,6 +12,10 @@ pool:
 
 steps:
 - task: Npm@1
+  inputs:
+    command: 'ci'
+    workingDir: 'client'
+- task: Npm@1
   displayName: Run Unit Tests
   inputs:
     command: 'custom'
