@@ -22,7 +22,7 @@
     "**/*.conf.js",
     "/app/cypress.config.ts",
     "**/main.ts",
-    "/app/server.js",
+    "/app/server.js"
   ],
   "reporter": ["lcov", "cobertura", "text-summary", "json"]
 }
