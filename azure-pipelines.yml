@@ -11,6 +11,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: Npm@1
+  inputs:
+    command: 'ci'
+    workingDir: 'client'
 - task: DockerCompose@0
   displayName: Docker Compose Build
   inputs:
