@@ -21,6 +21,12 @@ steps:
     command: 'custom'
     workingDir: 'client'
     customCommand: 'run test:coverage'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Code Coverage - Unit Tests'
+  inputs:
+    PathtoPublish: client/coverage-jest
+    ArtifactName: coverage-jest
+  condition: failed()
 - task: DockerCompose@0
   displayName: Docker Compose Build
   inputs:
