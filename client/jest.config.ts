@@ -6,7 +6,8 @@ const config: Config = {
   modulePathIgnorePatterns: ["cypress/e2e"],
   coverageDirectory: "coverage-jest",
   reporters: [
-    "default", "summary"
+    "default", "summary",
+    ["jest-junit", {outputDirectory: 'reports', outputName: 'test-results.xml'}],
   ]
 };
 
