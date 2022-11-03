@@ -10,12 +10,14 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "e2e": "ng e2e",
-    "coverage-report": "nyc report --reporter=cobertura --report-dir=",
+    "coverage-report": "nyc report --reporter=cobertura --report-dir=reports",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "start:ci": "ng run client:serve-coverage",
     "e2e:ci": "ng run client:e2e-ci",
-    "e2e:coverage": "npx nyc report --reporter=lcov --reporter=text-summary"
+    "e2e:coverage": "npx nyc report --reporter=lcov --reporter=text-summary",
+    "copy:reports": "(mkdir reports || true) && cp coverage-jest/coverage-final.json reports/from-jest.json && cp .nyc_output/out.json reports/from-cypress.json",
+    "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json"
   },
   "private": true,
   "dependencies": {

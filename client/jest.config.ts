@@ -7,7 +7,7 @@ const config: Config = {
   coverageDirectory: "coverage-jest",
   reporters: [
     "default", "summary",
-    ["jest-junit", {outputDirectory: 'reports', outputName: 'test-results.xml'}],
+    ["jest-junit", {outputDirectory: 'results', outputName: 'test-results.xml'}],
   ]
 };
 
