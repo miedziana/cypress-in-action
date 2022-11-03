@@ -11,10 +11,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Npm@1
-  inputs:
-    command: 'install'
-    workingDir: 'client'
 - task: DockerCompose@0
   displayName: Docker Compose Build
   inputs:
@@ -65,27 +61,7 @@ steps:
   inputs:
     testRunner: JUnit
     testResultsFiles: '**/test-results*.xml'
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run copy:reports'
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run combine:reports'
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run coverage-report'
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Code Coverage Report'
-  inputs:
-    PathtoPublish: client/reports/
-    ArtifactName: reports
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/client/reports/cobertura-coverage.xml'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/client/.nyc_output/cobertura-coverage.xml'
