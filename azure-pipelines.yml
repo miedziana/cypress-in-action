@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -10,6 +11,21 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: Npm@1
+  inputs:
+    command: 'ci'
+    workingDir: 'client'
+- task: Npm@1
+  displayName: Run Unit Tests
+  inputs:
+    command: 'custom'
+    workingDir: 'client'
+    customCommand: 'run test:coverage'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Code Coverage - Unit Tests'
+  inputs:
+    PathtoPublish: client/coverage-jest
+    ArtifactName: coverage-jest
 - task: DockerCompose@0
   displayName: Docker Compose Build
   inputs:
@@ -46,6 +62,11 @@ steps:
     ArtifactName: videos
   condition: succeededOrFailed()
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Code Coverage'
+  inputs:
+    PathtoPublish: client/.nyc_output/
+    ArtifactName: coverage-cypress
+- task: PublishBuildArtifacts@1
   displayName: 'Publish Code Coverage Report'
   inputs:
     PathtoPublish: client/coverage/
@@ -54,8 +75,23 @@ steps:
   condition: succeededOrFailed()
   inputs:
     testRunner: JUnit
-    testResultsFiles: '**/test-results-*.xml'
+    testResultsFiles: '**/test-results*.xml'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'client'
+    customCommand: 'run copy:reports'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'client'
+    customCommand: 'run combine:reports'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'client'
+    customCommand: 'run coverage-report'
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/client/coverage/cobertura-coverage.xml'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/client/reports/cobertura-coverage.xml'
