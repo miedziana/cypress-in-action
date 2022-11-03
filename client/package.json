@@ -16,7 +16,7 @@
     "start:ci": "ng run client:serve-coverage",
     "e2e:ci": "ng run client:e2e-ci",
     "e2e:coverage": "npx nyc report --reporter=lcov --reporter=text-summary",
-    "copy:reports": "(mkdir reports || true) && cp coverage-jest/coverage-final.json reports/from-jest.json && cp .nyc_output/out.json reports/from-cypress.json",
+    "copy:reports": "(mkdir reports || true) && cp coverage-jest/coverage-final.json reports/from-jest.json && cp coverage/coverage-final.json reports/from-cypress.json",
     "combine:reports": "npx nyc merge ./reports && mv coverage.json .nyc_output/out.json",
     "all-tests": "npm run test:coverage & npm run e2e:ci",
     "all-tests:report": "npm run all-tests && npm run copy:reports && npm run combine:reports && npm run coverage-report"

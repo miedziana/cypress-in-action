@@ -47,3 +47,4 @@ Thumbs.db
 /.env
 /coverage-jest/
 /reports/
+/.nyc_output/
