@@ -15,6 +15,7 @@ steps:
   displayName: Run Unit Tests
   inputs:
     command: 'custom'
+    workingDir: 'client'
     customCommand: 'run test:coverage'
 - task: DockerCompose@0
   displayName: Docker Compose Build
