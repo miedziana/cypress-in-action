@@ -13,4 +13,4 @@ COPY . .
 
 RUN npx cypress verify
 
-CMD ["npm", "run", "all-tests"]
+CMD ["npm", "run", "all-tests:report"]
